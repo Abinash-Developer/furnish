@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Basic Route
 app.get('/', (req, res) => {
-  res.json({ message: 'Server is running!',status:"Abinash Abinash" });
+  res.json({ message: 'Server is running!',status:"Abinash Banda" });
 });
 
 // Your Routes here
