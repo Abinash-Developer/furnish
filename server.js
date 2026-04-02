@@ -14,9 +14,9 @@ app.get('/', (req, res) => {
 });
 
 // Your Routes here
-// app.use('/api/users', require('./routes/users'));
+app.use('/api/users', require('./routes/users'));
 // app.use('/api/products', require('./routes/products'));
-
+ 
 // 404 Handler
 app.use((req, res) => {
   res.status(404).json({ message: 'Route not found' });
