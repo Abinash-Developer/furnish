@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const connectDB = require('./config/dbconnect');
 require('dotenv').config();
 connectDB();
@@ -7,6 +8,7 @@ connectDB();
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 // Basic Route
 app.get('/', (req, res) => {
