@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const connectDB = require('./config/dbconnect');
+const {varifiedUser} = require('./middleware/authMiddleware');
 require('dotenv').config();
 connectDB();
 
@@ -16,6 +17,7 @@ app.get('/', (req, res) => {
 });
 
 // Your Routes here
+app.post('/api/varify-user',varifiedUser);
 app.use('/api/users', require('./routes/users'));
 // app.use('/api/products', require('./routes/products'));
  
