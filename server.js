@@ -21,6 +21,7 @@ app.get('/', (req, res) => {
 app.post('/api/varify-user',varifiedUser);
 app.use('/api/users', require('./routes/users'));
 app.use('/api/category', require('./routes/category'));
+app.use('/api/color', require('./routes/color'));
   
 // 404 Handler
 app.use((req, res) => {

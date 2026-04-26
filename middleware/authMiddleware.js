@@ -9,4 +9,14 @@ const varifiedUser = async (req,res,next)=>{
        res.json({error:error.message});
    }
 }
-module.exports = {varifiedUser}
+const authuser = async (req,res,next)=>{
+   try {
+      const token = req.headers.authorization;
+      if(jwt.verify(token.split(' ')[1],secretKey)){
+        next();
+      }
+   } catch (error) {
+      res.json({error:error.message});
+   }
+}
+module.exports = {varifiedUser,authuser}
