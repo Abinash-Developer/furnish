@@ -22,6 +22,7 @@ app.post('/api/varify-user',varifiedUser);
 app.use('/api/users', require('./routes/users'));
 app.use('/api/category', require('./routes/category'));
 app.use('/api/color', require('./routes/color'));
+app.use('/api/products', require('./routes/product'));
   
 // 404 Handler
 app.use((req, res) => {
