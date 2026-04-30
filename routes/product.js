@@ -34,4 +34,24 @@ router.post('/create-product',authuser,upload.single("image"),async (req,res)=>{
         re.json({error:error.message})
     }
 })
+
+router.get('/products',async(req,res)=>{
+  try{
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+    const [data, totalItems] = await Promise.all([
+      PRODUCTS.find().sort({ createdAt: -1 }).skip(skip).limit(limit),
+      PRODUCTS.countDocuments()
+    ]);
+    res.json({
+      data,
+      currentPage: page,
+      totalPages: Math.ceil(totalItems / limit),
+      totalItems
+    });
+  }catch(error){
+    res.json({error:error.message});
+  }
+})
 module.exports = router;
